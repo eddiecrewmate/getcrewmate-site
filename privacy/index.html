@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — CrewMate</title>
+<style>
+  :root{--navy:#1B2A4A;--brass:#B08D57;--ink:#23262D;--muted:#5A5F6B;--line:#E3E1DA;--bg:#FBFAF7;--soft:#F4F2EC;}
+  *{box-sizing:border-box;} html{-webkit-text-size-adjust:100%;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;font-size:16px;}
+  .wrap{max-width:760px;margin:0 auto;padding:32px 22px 80px;}
+  header.brand{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--brass);padding-bottom:14px;margin-bottom:8px;}
+  .brand .name{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--brass);font-weight:700;}
+  .brand nav a{font-size:13px;color:var(--brass);text-decoration:none;}
+  .brand nav a:hover{color:var(--navy);text-decoration:underline;}
+  .brand nav .sep{color:var(--muted);font-size:13px;}
+  h1{color:var(--navy);font-size:30px;line-height:1.2;margin:.35em 0 .15em;}
+  h2{color:var(--navy);font-size:20px;margin:1.8em 0 .5em;}
+  h3{color:var(--navy);font-size:16px;margin:1.3em 0 .4em;}
+  a{color:var(--brass);}
+  .meta{color:var(--muted);font-size:13.5px;margin:.2em 0 0;}
+  hr{border:none;border-top:1px solid var(--line);margin:1.8em 0;}
+  table{width:100%;border-collapse:collapse;margin:1em 0;font-size:14.5px;display:block;overflow-x:auto;}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top;}
+  th{background:var(--navy);color:#fff;font-weight:600;}
+  tr:nth-child(even) td{background:var(--soft);}
+  blockquote{background:#FFF7EC;border:1px solid var(--brass);border-left:5px solid var(--brass);border-radius:8px;margin:1.2em 0;padding:14px 18px;color:#5b4a30;}
+  blockquote p{color:#5b4a30;} blockquote strong{color:#3d2f17;}
+  code{background:var(--soft);padding:1px 5px;border-radius:4px;font-size:90%;}
+  footer.legal{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;}
+  @media (max-width:520px){h1{font-size:25px;} .wrap{padding:24px 16px 64px;} header.brand{flex-direction:column;gap:6px;} .brand nav a{margin:0 14px 0 0;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="brand"><span class="name">CrewMate</span><nav><a href="/privacy/">Privacy</a><span class="sep">&nbsp;|&nbsp;</span><a href="/terms/">Terms</a></nav></header>
+<h1>CrewMate — Privacy Policy</h1>
+<p><strong>Effective date:</strong> June 29, 2026<br />
+<strong>Last updated:</strong> June 29, 2026<br />
+<strong>Canonical URL:</strong> https://getcrewmate.app/privacy/</p>
+<hr />
+<h2>1. Who we are</h2>
+<p>CrewMate ("CrewMate," "we," "us," or "our") is a mobile application built for airline cabin crew and flight crew. CrewMate is operated by <strong>WeisMon Holdings LLC</strong>.</p>
+<p>If you have any questions about this Privacy Policy or your data, contact us at <strong>support@getcrewmate.app</strong>.</p>
+<p>This policy explains what personal information CrewMate collects, how we use it, who we share it with, how long we keep it, and the choices and rights you have.</p>
+<hr />
+<h2>2. Scope</h2>
+<p>This policy applies to the CrewMate mobile application and the services it connects to. It is written for our current launch audience in the <strong>United States</strong>. CrewMate is <strong>not directed to children under 13</strong>, and we do not knowingly collect personal information from children under 13. CrewMate is a professional tool for working aircrew. <em>(If you believe a child under 13 has provided us personal information, contact support@getcrewmate.app and we will delete it.)</em></p>
+<hr />
+<h2>3. Information we collect</h2>
+<h3>3.1 Information you provide</h3>
+<table>
+<thead>
+<tr>
+<th>Data</th>
+<th>When collected</th>
+<th>Where stored</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Email address</td>
+<td>Sign-up</td>
+<td>Supabase Auth</td>
+</tr>
+<tr>
+<td>Password</td>
+<td>Sign-up</td>
+<td>Supabase Auth (stored only as a salted bcrypt hash — we never store your plaintext password)</td>
+</tr>
+<tr>
+<td>Display name</td>
+<td>Sign-up</td>
+<td>Supabase database (profile)</td>
+</tr>
+<tr>
+<td>Crew role (e.g. Flight Attendant / Pilot)</td>
+<td>Sign-up</td>
+<td>Supabase database (profile)</td>
+</tr>
+<tr>
+<td>Airline (optional)</td>
+<td>Sign-up / settings</td>
+<td>Supabase database (profile)</td>
+</tr>
+<tr>
+<td>Home base airport (optional)</td>
+<td>Sign-up / settings</td>
+<td>Supabase database (profile)</td>
+</tr>
+<tr>
+<td>Schedule data — trips, duty periods, flight legs, layovers, and off-duty events you enter</td>
+<td>Manual entry in the app</td>
+<td>Supabase database</td>
+</tr>
+<tr>
+<td>Hotel name, address, and phone (for layovers)</td>
+<td>Manual entry, optionally aided by a place-lookup field</td>
+<td>Supabase database</td>
+</tr>
+<tr>
+<td>Messages you send to "Eddie" (the in-app assistant)</td>
+<td>When you chat with Eddie</td>
+<td>Stored on your device only (see §3.4); each message is sent to our AI provider to generate a reply</td>
+</tr>
+</tbody>
+</table>
+<h3>3.2 Information collected automatically</h3>
+<table>
+<thead>
+<tr>
+<th>Data</th>
+<th>What it is</th>
+<th>Where it goes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Product-analytics events</td>
+<td>A fixed, governed set of in-app interaction events (for example: a screen was viewed, a tool tile was tapped, the assistant was opened). The full set is limited to 8 event types.</td>
+<td>Stored in our Supabase database (<code>analytics_events</code>)</td>
+</tr>
+<tr>
+<td>Crash and error reports</td>
+<td>Diagnostic information generated automatically if the app crashes or hits an unexpected error</td>
+<td>Sent to Sentry, our crash-monitoring provider</td>
+</tr>
+</tbody>
+</table>
+<p><strong>About our analytics — what we deliberately do <em>not</em> do.</strong> Our product analytics are <strong>first-party and pseudonymous</strong>: each event is linked only to your account's internal user ID, never to your name or email within the event. The event payloads are restricted to a fixed allowlist and enforced by a database constraint, so <strong>no free-text and no personal information can be placed in them</strong>. We use <strong>no third-party analytics SDK, no advertising identifiers, and no cross-app or cross-site tracking</strong>. We use this data only to understand which features are used and to improve the app.</p>
+<p><strong>About our crash reports.</strong> Crash and error reports sent to Sentry are <strong>stripped of personal information</strong> before they leave your device — no email, no username, and no IP address are attached. The only identifier included is your account's internal user ID, used to group related reports.</p>
+<h3>3.3 Information collected only when you use specific features</h3>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Data</th>
+<th>How it is handled</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Location-aware features (e.g. layover suggestions, assistant context)</td>
+<td>Approximate location</td>
+<td>Only collected if you grant permission. Reduced to a city/country (and, for nearby-place search, a coordinate) <strong>on your device</strong> and used transiently at the moment of the request. <strong>Not stored on our servers.</strong></td>
+</tr>
+<tr>
+<td>Translator / voice input</td>
+<td>Microphone audio</td>
+<td>Sent to Google Speech-to-Text to produce a transcript, then discarded. <strong>Not stored by CrewMate.</strong></td>
+</tr>
+<tr>
+<td>Translator photo/OCR</td>
+<td>A photo you take for text recognition</td>
+<td>Sent to Google Cloud Vision to extract text, then discarded. <strong>Not stored by CrewMate.</strong></td>
+</tr>
+<tr>
+<td>Flight lookup / watchlist</td>
+<td>The airline code + flight number you look up</td>
+<td>Sent to our flight-data provider to retrieve public flight information. <strong>The query contains no personal information.</strong></td>
+</tr>
+</tbody>
+</table>
+<h3>3.4 On-device only</h3>
+<p>Your conversation history with the in-app assistant ("Eddie") is stored <strong>only on your device</strong> for up to 7 days and is <strong>not</strong> stored on our servers. Each message you send is transmitted to our AI provider to generate a response.</p>
+<h3>3.5 What we do <strong>not</strong> collect</h3>
+<p>We do <strong>not</strong> collect: payment or financial-account information (CrewMate has no in-app purchases at launch); passport, visa, or government-ID data; health or biometric data; your contacts/address book; your photo library beyond a photo you explicitly hand to the Translator feature; advertising identifiers; or any third-party / behavioral-advertising analytics.</p>
+<h3>3.6 First-run onboarding</h3>
+<p>When you first open CrewMate, the onboarding experience is <strong>local to your device and manual</strong> — you add your first trip yourself. First-run onboarding does <strong>not</strong> sync your phone calendar and does <strong>not</strong> request calendar permission.</p>
+<hr />
+<h2>4. How we use your information</h2>
+<p>We use your information to:</p>
+<ul>
+<li>Create and operate your account, and sign you in.</li>
+<li>Provide CrewMate's core features (your schedule, layover tools, flight information, the assistant, and related tools).</li>
+<li>Respond to your support requests.</li>
+<li>Keep the app secure, diagnose crashes, and fix bugs.</li>
+<li>Understand which features are used so we can improve the product.</li>
+</ul>
+<p>We do <strong>not</strong> sell your personal information, and we do <strong>not</strong> use it for third-party advertising.</p>
+<hr />
+<h2>5. Who we share information with (subprocessors)</h2>
+<p>CrewMate relies on the following service providers, who process data on our behalf only to provide their service. We do not sell or rent your data to anyone.</p>
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>What they process</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Supabase</td>
+<td>Account email, hashed password, profile, schedule, layover, and analytics data</td>
+<td>Authentication, database, and backend functions (hosted in the US)</td>
+</tr>
+<tr>
+<td>Google (Gemini)</td>
+<td>Your messages to the assistant + transient location context (city/country)</td>
+<td>Generating assistant replies</td>
+</tr>
+<tr>
+<td>Google (Speech-to-Text)</td>
+<td>Microphone audio (transient)</td>
+<td>Voice transcription</td>
+</tr>
+<tr>
+<td>Google (Cloud Vision)</td>
+<td>Photos you submit to Translator (transient)</td>
+<td>Text recognition</td>
+</tr>
+<tr>
+<td>Google (Cloud Translation)</td>
+<td>Text you submit for translation (transient)</td>
+<td>Translation</td>
+</tr>
+<tr>
+<td>Google (Places)</td>
+<td>Coordinates / category for nearby-place search (no personal identity tied to the query)</td>
+<td>Layover place suggestions, hotel lookup</td>
+</tr>
+<tr>
+<td>AviationStack</td>
+<td>Airline code + flight number (no personal information)</td>
+<td>Flight information lookup</td>
+</tr>
+<tr>
+<td>Frankfurter</td>
+<td>Currency codes (no personal information)</td>
+<td>Exchange rates</td>
+</tr>
+<tr>
+<td>OpenWeather</td>
+<td>City name (no personal information)</td>
+<td>Weather lookup</td>
+</tr>
+<tr>
+<td>Sentry</td>
+<td>PII-stripped crash/error diagnostics (internal user ID only)</td>
+<td>Crash and error monitoring</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Assistant AI provider.</strong> Your messages to the assistant are sent to Google's Gemini API to generate replies. The Gemini API is used through a billing-enabled Google project; under Google's paid-tier Gemini API terms, Google does not use those messages to train or improve its models. We retain <strong>Anthropic</strong> as an <strong>inactive fallback</strong> provider that is <strong>not used</strong> unless we switch providers; if it were ever activated, your assistant messages would be processed by that provider under its applicable terms. We will update this policy if the active assistant provider changes.</p>
+<p>We may also disclose information if required by law, to enforce our Terms, or to protect the rights, safety, or property of CrewMate, our users, or others.</p>
+<hr />
+<h2>6. How long we keep your information</h2>
+<table>
+<thead>
+<tr>
+<th>Data</th>
+<th>Retention</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Account identity (email + hashed password)</td>
+<td>Until you delete your account</td>
+</tr>
+<tr>
+<td>Profile, schedule, layover, and event data</td>
+<td>Until you delete your account</td>
+</tr>
+<tr>
+<td>Product-analytics events</td>
+<td>Until you delete your account — they are <strong>automatically and permanently deleted when your account is deleted</strong> (enforced at the database level by a cascade tied to your account record), and are not separately retained or anonymized afterward</td>
+</tr>
+<tr>
+<td>Assistant ("Eddie") chat history</td>
+<td>Up to 7 days, on your device only — auto-clears, or you can clear it manually at any time</td>
+</tr>
+<tr>
+<td>Microphone audio / Translator photos</td>
+<td>Not retained by CrewMate (transient)</td>
+</tr>
+<tr>
+<td>Crash/error reports</td>
+<td>Per Sentry's retention settings (PII-stripped before sending)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>7. Your choices and rights</h2>
+<ul>
+<li><strong>Access</strong> — You can view your data inside the app (your schedule, profile, and assistant history). For a formal export, contact <strong>support@getcrewmate.app</strong>.</li>
+<li><strong>Deletion</strong> — You can delete your account from within the app (Account screen → Delete account). Deleting your account removes your account record and <strong>cascades to permanently delete</strong> your profile, schedule, layovers, events, and analytics events. You may also request deletion by emailing <strong>support@getcrewmate.app</strong>.</li>
+<li><strong>Do Not Sell or Share</strong> — CrewMate does <strong>not</strong> sell or share your personal information for advertising, so no opt-out is needed. We state this here for the avoidance of doubt.</li>
+<li><strong>California residents (CCPA)</strong> — California residents have rights to know, access, and delete their personal information, and not to be discriminated against for exercising them. The access and deletion mechanisms above apply to you; contact <strong>support@getcrewmate.app</strong> for any request.</li>
+</ul>
+<p><em>If we expand to the EU/UK in the future, additional GDPR-specific rights and mechanisms will be added to this policy at that time.</em></p>
+<hr />
+<h2>8. Security</h2>
+<p>We protect your information with:</p>
+<ul>
+<li><strong>Encryption in transit</strong> — traffic between the CrewMate app and our backend is protected with HTTPS. Connections from our backend to our third-party providers also use HTTPS, <strong>with one exception currently under review</strong>: the flight-information lookup provider may not use HTTPS on its present service tier. That lookup contains only an airline code and a flight number and <strong>no direct personal identifiers</strong>.</li>
+<li><strong>Encryption at rest</strong> — our database encrypts stored data (AES-256).</li>
+<li><strong>Password protection</strong> — passwords are stored only as salted bcrypt hashes.</li>
+<li><strong>Access controls</strong> — row-level security restricts each user's data to that user; server-side keys for third-party services are never embedded in the app.</li>
+</ul>
+<p>No method of transmission or storage is 100% secure, but we work to protect your information using industry-standard measures.</p>
+<hr />
+<h2>9. Children's privacy</h2>
+<p>CrewMate is a professional tool intended for adult aircrew and is <strong>not directed to children under 13</strong>. We do not knowingly collect personal information from children under 13. If you believe we have collected such information, contact <strong>support@getcrewmate.app</strong> and we will delete it.</p>
+<hr />
+<h2>10. Changes to this policy</h2>
+<p>If we make material changes to this policy, we will update the "Last updated" date above and, where appropriate, notify you in the app. Your continued use of CrewMate after changes take effect means you accept the updated policy.</p>
+<hr />
+<h2>11. Contact us</h2>
+<p>Questions, requests, or concerns about your privacy:</p>
+<p><strong>Email:</strong> support@getcrewmate.app<br />
+<strong>Operator:</strong> WeisMon Holdings LLC<br />
+<strong>Governing law:</strong> This policy is governed by the laws of the State of <strong>New York, USA</strong>.</p>
+<footer class="legal">CrewMate is a product of WeisMon Holdings LLC. &nbsp;·&nbsp; Contact: <a href="mailto:support@getcrewmate.app">support@getcrewmate.app</a></footer>
+</div>
+</body>
+</html>
