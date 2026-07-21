@@ -4,39 +4,52 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacy Policy — CrewMate</title>
+<meta name="description" content="CrewMate Privacy Policy: what personal information the CrewMate app for airline crew collects, how it is used and shared, how long it is kept, and your rights. Operated by WeisMon Holdings LLC.">
+<meta name="robots" content="index, follow">
+<meta name="color-scheme" content="light">
+<link rel="canonical" href="https://getcrewmate.app/privacy/">
 <style>
-  :root{--navy:#1B2A4A;--brass:#B08D57;--ink:#23262D;--muted:#5A5F6B;--line:#E3E1DA;--bg:#FBFAF7;--soft:#F4F2EC;}
+  :root{--navy:#1B2A4A;--brass:#B08D57;--brass-text:#806633;--ink:#23262D;--muted:#5A5F6B;--line:#E3E1DA;--bg:#FBFAF7;--soft:#F4F2EC;}
+  /* --brass = decorative borders only. --brass-text (>=4.5:1 on --bg) = link + small brass text. */
   *{box-sizing:border-box;} html{-webkit-text-size-adjust:100%;}
   body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;font-size:16px;}
+  .skip{position:absolute;left:-9999px;top:8px;background:var(--navy);color:#fff;padding:10px 16px;border-radius:6px;z-index:10;text-decoration:none;}
+  .skip:focus{left:16px;}
+  a:focus-visible,.skip:focus-visible,.table-wrap:focus-visible{outline:3px solid var(--navy);outline-offset:2px;}
   .wrap{max-width:760px;margin:0 auto;padding:32px 22px 80px;}
   header.brand{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--brass);padding-bottom:14px;margin-bottom:8px;}
-  .brand .name{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--brass);font-weight:700;}
-  .brand nav a{font-size:13px;color:var(--brass);text-decoration:none;}
+  .brand .name{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--brass-text);font-weight:700;}
+  .brand nav a{font-size:13px;color:var(--brass-text);text-decoration:none;}
   .brand nav a:hover{color:var(--navy);text-decoration:underline;}
+  .brand nav a[aria-current="page"]{color:var(--navy);text-decoration:underline;font-weight:700;}
   .brand nav .sep{color:var(--muted);font-size:13px;}
   h1{color:var(--navy);font-size:30px;line-height:1.2;margin:.35em 0 .15em;}
   h2{color:var(--navy);font-size:20px;margin:1.8em 0 .5em;}
   h3{color:var(--navy);font-size:16px;margin:1.3em 0 .4em;}
-  a{color:var(--brass);}
+  a{color:var(--brass-text);}
   .meta{color:var(--muted);font-size:13.5px;margin:.2em 0 0;}
   hr{border:none;border-top:1px solid var(--line);margin:1.8em 0;}
-  table{width:100%;border-collapse:collapse;margin:1em 0;font-size:14.5px;display:block;overflow-x:auto;}
+  .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1em 0;}
+  table{width:100%;border-collapse:collapse;font-size:14.5px;min-width:520px;}
   th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top;}
   th{background:var(--navy);color:#fff;font-weight:600;}
   tr:nth-child(even) td{background:var(--soft);}
   blockquote{background:#FFF7EC;border:1px solid var(--brass);border-left:5px solid var(--brass);border-radius:8px;margin:1.2em 0;padding:14px 18px;color:#5b4a30;}
   blockquote p{color:#5b4a30;} blockquote strong{color:#3d2f17;}
   code{background:var(--soft);padding:1px 5px;border-radius:4px;font-size:90%;}
+  main{display:block;}
   footer.legal{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;}
   @media (max-width:520px){h1{font-size:25px;} .wrap{padding:24px 16px 64px;} header.brand{flex-direction:column;gap:6px;} .brand nav a{margin:0 14px 0 0;}}
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div class="wrap">
-<header class="brand"><span class="name">CrewMate</span><nav><a href="/privacy/">Privacy</a><span class="sep">&nbsp;|&nbsp;</span><a href="/terms/">Terms</a></nav></header>
+<header class="brand"><span class="name">CrewMate</span><nav aria-label="Legal documents"><a href="/privacy/" aria-current="page">Privacy</a><span class="sep">&nbsp;|&nbsp;</span><a href="/terms/">Terms</a></nav></header>
+<main id="main">
 <h1>CrewMate — Privacy Policy</h1>
 <p><strong>Effective date:</strong> June 29, 2026<br />
-<strong>Last updated:</strong> June 29, 2026<br />
+<strong>Last updated:</strong> July 20, 2026<br />
 <strong>Canonical URL:</strong> https://getcrewmate.app/privacy/</p>
 <hr />
 <h2>1. Who we are</h2>
@@ -49,12 +62,13 @@
 <hr />
 <h2>3. Information we collect</h2>
 <h3>3.1 Information you provide</h3>
+<div class="table-wrap" role="region" aria-label="Data table — scroll horizontally to view all columns" tabindex="0">
 <table>
 <thead>
 <tr>
-<th>Data</th>
-<th>When collected</th>
-<th>Where stored</th>
+<th scope="col">Data</th>
+<th scope="col">When collected</th>
+<th scope="col">Where stored</th>
 </tr>
 </thead>
 <tbody>
@@ -105,19 +119,21 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h3>3.2 Information collected automatically</h3>
+<div class="table-wrap" role="region" aria-label="Data table — scroll horizontally to view all columns" tabindex="0">
 <table>
 <thead>
 <tr>
-<th>Data</th>
-<th>What it is</th>
-<th>Where it goes</th>
+<th scope="col">Data</th>
+<th scope="col">What it is</th>
+<th scope="col">Where it goes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Product-analytics events</td>
-<td>A fixed, governed set of in-app interaction events (for example: a screen was viewed, a tool tile was tapped, the assistant was opened). The full set is limited to 8 event types.</td>
+<td>A fixed, governed allowlist of in-app interaction events (for example: a screen was viewed, a tool tile was tapped, the assistant was opened)</td>
 <td>Stored in our Supabase database (<code>analytics_events</code>)</td>
 </tr>
 <tr>
@@ -127,15 +143,17 @@
 </tr>
 </tbody>
 </table>
-<p><strong>About our analytics — what we deliberately do <em>not</em> do.</strong> Our product analytics are <strong>first-party and pseudonymous</strong>: each event is linked only to your account's internal user ID, never to your name or email within the event. The event payloads are restricted to a fixed allowlist and enforced by a database constraint, so <strong>no free-text and no personal information can be placed in them</strong>. We use <strong>no third-party analytics SDK, no advertising identifiers, and no cross-app or cross-site tracking</strong>. We use this data only to understand which features are used and to improve the app.</p>
-<p><strong>About our crash reports.</strong> Crash and error reports sent to Sentry are <strong>stripped of personal information</strong> before they leave your device — no email, no username, and no IP address are attached. The only identifier included is your account's internal user ID, used to group related reports.</p>
+</div>
+<p>*<em>About our analytics — what we deliberately do </em>not<em> do.<strong> Our product analytics are </strong>first-party and pseudonymous<strong>. The event properties are restricted to a fixed, governed allowlist and enforced by a database constraint, so they contain </strong>no direct profile identifiers and no free text<strong>; each analytics row is, however, linked to your account's internal identifier (never to your name or email within the event). We use </strong>no third-party analytics SDK, no advertising identifiers, and no cross-app or cross-site tracking</em>*. We use this data only to understand which features are used and to improve the app.</p>
+<p><strong>About our crash reports.</strong> In the crash and error reports sent to Sentry, our crash-monitoring provider, we exclude direct profile fields from the report's user context before it leaves your device — no email and no username are attached, and the only identifier we include is your account's internal identifier, used to group related reports. Server-side handling of network metadata such as IP address follows Sentry's configuration and terms.</p>
 <h3>3.3 Information collected only when you use specific features</h3>
+<div class="table-wrap" role="region" aria-label="Data table — scroll horizontally to view all columns" tabindex="0">
 <table>
 <thead>
 <tr>
-<th>Feature</th>
-<th>Data</th>
-<th>How it is handled</th>
+<th scope="col">Feature</th>
+<th scope="col">Data</th>
+<th scope="col">How it is handled</th>
 </tr>
 </thead>
 <tbody>
@@ -161,10 +179,11 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h3>3.4 On-device only</h3>
 <p>Your conversation history with the in-app assistant ("Eddie") is stored <strong>only on your device</strong> for up to 7 days and is <strong>not</strong> stored on our servers. Each message you send is transmitted to our AI provider to generate a response.</p>
 <h3>3.5 What we do <strong>not</strong> collect</h3>
-<p>We do <strong>not</strong> collect: payment or financial-account information (CrewMate has no in-app purchases at launch); passport, visa, or government-ID data; health or biometric data; your contacts/address book; your photo library beyond a photo you explicitly hand to the Translator feature; advertising identifiers; or any third-party / behavioral-advertising analytics.</p>
+<p>We do <strong>not</strong> collect: your payment-card or bank-account details — if you purchase a Premium subscription, Apple processes the payment and CrewMate never receives your card number (see "Premium subscriptions" below); passport, visa, or government-ID data; health or biometric data; your contacts/address book; your photo library beyond a photo you explicitly hand to the Translator feature; advertising identifiers; or any third-party / behavioral-advertising analytics.</p>
 <h3>3.6 First-run onboarding</h3>
 <p>When you first open CrewMate, the onboarding experience is <strong>local to your device and manual</strong> — you add your first trip yourself. First-run onboarding does <strong>not</strong> sync your phone calendar and does <strong>not</strong> request calendar permission.</p>
 <hr />
@@ -181,12 +200,13 @@
 <hr />
 <h2>5. Who we share information with (subprocessors)</h2>
 <p>CrewMate relies on the following service providers, who process data on our behalf only to provide their service. We do not sell or rent your data to anyone.</p>
+<div class="table-wrap" role="region" aria-label="Data table — scroll horizontally to view all columns" tabindex="0">
 <table>
 <thead>
 <tr>
-<th>Provider</th>
-<th>What they process</th>
-<th>Purpose</th>
+<th scope="col">Provider</th>
+<th scope="col">What they process</th>
+<th scope="col">Purpose</th>
 </tr>
 </thead>
 <tbody>
@@ -237,20 +257,29 @@
 </tr>
 <tr>
 <td>Sentry</td>
-<td>PII-stripped crash/error diagnostics (internal user ID only)</td>
+<td>Crash/error diagnostics — the client excludes email and username from the report's user context (<code>sendDefaultPii</code> off) and includes your internal account identifier; server-side handling of network metadata such as IP address follows Sentry's configuration and terms</td>
 <td>Crash and error monitoring</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Assistant AI provider.</strong> Your messages to the assistant are sent to Google's Gemini API to generate replies. The Gemini API is used through a billing-enabled Google project; under Google's paid-tier Gemini API terms, Google does not use those messages to train or improve its models. We retain <strong>Anthropic</strong> as an <strong>inactive fallback</strong> provider that is <strong>not used</strong> unless we switch providers; if it were ever activated, your assistant messages would be processed by that provider under its applicable terms. We will update this policy if the active assistant provider changes.</p>
+</div>
+<p><strong>Assistant AI provider.</strong> Your messages to the assistant are sent to Google's Gemini API to generate replies. The Gemini API is used through a billing-enabled Google project; under Google's paid-tier Gemini API terms, Google does not use those messages to train or improve its models. Google may, however, retain limited logs for abuse prevention and for legal, regulatory, or configured logging purposes. We retain <strong>Anthropic</strong> as an <strong>inactive fallback</strong> provider that is <strong>not used</strong> unless we switch providers; if it were ever activated, your assistant messages would be processed by that provider under its applicable terms. We will update this policy if the active assistant provider changes.</p>
 <p>We may also disclose information if required by law, to enforce our Terms, or to protect the rights, safety, or property of CrewMate, our users, or others.</p>
 <hr />
+<h2>5A. Premium subscriptions (if offered)</h2>
+<p>If CrewMate offers Premium subscriptions and you subscribe, we process purchase and subscription information from Apple's App Store so we can deliver and manage your subscription. This includes: the subscription <strong>product identifier</strong>; Apple <strong>transaction identifiers</strong> (the original and latest transaction IDs); your <strong>subscription and entitlement status</strong>; <strong>purchase and expiration dates</strong>; <strong>auto-renewal, billing-grace-period, refund, and revocation</strong> information; an <strong>app-account token</strong> that links your purchase to your CrewMate account; and the <strong>App Store server-notification records</strong> Apple sends us about your subscription's lifecycle.</p>
+<p><strong>Payment method.</strong> Apple, not CrewMate, processes your payment. <strong>CrewMate does not receive or store your credit-card number or other payment-card details.</strong> We do process the purchase and subscription history described above.</p>
+<p><strong>How this data is used.</strong> Only to: deliver your Premium entitlement, restore your purchases, handle renewals, grace periods, refunds, and revocations, keep the subscription secure, provide support, reconcile our records, and meet legal and compliance obligations. It is <strong>not</strong> used for advertising.</p>
+<p><strong>Apple as the purchase platform and data source.</strong> Apple / the App Store is the platform through which any subscription is purchased and a source of the data above; Apple's own handling of your payment and Apple Account is governed by Apple's privacy policy.</p>
+<p><strong>Account deletion.</strong> If you delete your account, your subscription-entitlement record and the transaction-identity binding are deleted with it. For the subscription-notification records Apple has sent us, CrewMate removes the direct account association from those retained records. Limited Apple transaction and notification identifiers may remain for security, reconciliation, fraud prevention, dispute handling, and legally required recordkeeping. These retained identifiers are not used for advertising.</p>
+<hr />
 <h2>6. How long we keep your information</h2>
+<div class="table-wrap" role="region" aria-label="Data table — scroll horizontally to view all columns" tabindex="0">
 <table>
 <thead>
 <tr>
-<th>Data</th>
-<th>Retention</th>
+<th scope="col">Data</th>
+<th scope="col">Retention</th>
 </tr>
 </thead>
 <tbody>
@@ -276,15 +305,16 @@
 </tr>
 <tr>
 <td>Crash/error reports</td>
-<td>Per Sentry's retention settings (PII-stripped before sending)</td>
+<td>Per Sentry's retention settings (the client excludes email and username from the report's user context before sending)</td>
 </tr>
 </tbody>
 </table>
+</div>
 <hr />
 <h2>7. Your choices and rights</h2>
 <ul>
 <li><strong>Access</strong> — You can view your data inside the app (your schedule, profile, and assistant history). For a formal export, contact <strong>support@getcrewmate.app</strong>.</li>
-<li><strong>Deletion</strong> — You can delete your account from within the app (Account screen → Delete account). Deleting your account removes your account record and <strong>cascades to permanently delete</strong> your profile, schedule, layovers, events, and analytics events. You may also request deletion by emailing <strong>support@getcrewmate.app</strong>.</li>
+<li><strong>Deletion</strong> — You can delete your account from within the app (Account screen → Delete account). Deleting your account removes your account record and <strong>cascades to permanently delete</strong> your profile, schedule, layovers, events, and analytics events. If you have subscribed to Premium, see "Premium subscriptions" (§5A) for how subscription and Apple notification records are handled on deletion. You may also request deletion by emailing <strong>support@getcrewmate.app</strong>.</li>
 <li><strong>Do Not Sell or Share</strong> — CrewMate does <strong>not</strong> sell or share your personal information for advertising, so no opt-out is needed. We state this here for the avoidance of doubt.</li>
 <li><strong>California residents (CCPA)</strong> — California residents have rights to know, access, and delete their personal information, and not to be discriminated against for exercising them. The access and deletion mechanisms above apply to you; contact <strong>support@getcrewmate.app</strong> for any request.</li>
 </ul>
@@ -311,6 +341,7 @@
 <p><strong>Email:</strong> support@getcrewmate.app<br />
 <strong>Operator:</strong> WeisMon Holdings LLC<br />
 <strong>Governing law:</strong> This policy is governed by the laws of the State of <strong>New York, USA</strong>.</p>
+</main>
 <footer class="legal">CrewMate is a product of WeisMon Holdings LLC. &nbsp;·&nbsp; Contact: <a href="mailto:support@getcrewmate.app">support@getcrewmate.app</a></footer>
 </div>
 </body>
