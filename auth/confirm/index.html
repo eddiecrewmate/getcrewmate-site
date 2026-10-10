@@ -43,14 +43,14 @@
 
   <section class="card" id="state-used" hidden aria-labelledby="h-used" tabindex="-1">
     <h1 id="h-used">This link was already used or has expired</h1>
-    <p class="lead">Sign in to CrewMate — if it asks, request a new email.</p>
+    <p class="lead">Open CrewMate and sign in. If it says your email isn’t confirmed yet, write to <a href="mailto:support@getcrewmate.app">support@getcrewmate.app</a> and we’ll send a new link.</p>
     <a class="btn open-app" href="crewmate://">Open CrewMate</a>
     <p class="meta on-computer">On a computer? Open CrewMate on your iPhone and sign in there.</p>
   </section>
 
   <section class="card" id="state-bad" hidden aria-labelledby="h-bad">
     <h1 id="h-bad">This link is incomplete</h1>
-    <p class="lead">Open CrewMate and sign in — if it asks, request a new email.</p>
+    <p class="lead">Open CrewMate and sign in. If it says your email isn’t confirmed yet, write to <a href="mailto:support@getcrewmate.app">support@getcrewmate.app</a>.</p>
     <a class="btn open-app" href="crewmate://">Open CrewMate</a>
   </section>
 </main>
@@ -121,13 +121,19 @@
       clearTimeout(timer);
       // The response body (a session) is deliberately never read or stored.
       if (res.ok) { forgetLink(); show('state-done', true); return; }
-      if (res.status >= 400 && res.status < 500 && res.status !== 429) { forgetLink(); show('state-used', true); return; }
-      throw new Error('server ' + res.status);
-    }).catch(function () {
+      // Supabase answers 403 (otp_expired) for a used, expired or unknown link.
+      // Anything else (400, 401 key problem, 429, 5xx) is not the person's fault.
+      if (res.status === 403) { forgetLink(); show('state-used', true); return; }
+      var err = new Error('server ' + res.status);
+      err.isServer = true;
+      throw err;
+    }).catch(function (err) {
       clearTimeout(timer);
       btn.disabled = false;
       status.className = 'status bad';
-      status.textContent = 'We couldn’t reach CrewMate just now. Check your connection and tap Confirm my email again.';
+      status.textContent = (err && err.isServer)
+        ? 'Something went wrong. Try again, or write to support@getcrewmate.app.'
+        : 'We couldn’t reach CrewMate just now. Check your connection and tap Confirm my email again.';
     });
   });
 })();

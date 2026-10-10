@@ -31,7 +31,7 @@
     <h1 id="h-phone">Reset your password</h1>
     <p class="lead">Tap the button to open CrewMate and choose a new password.</p>
     <a class="btn" id="open-phone" href="#">Open CrewMate</a>
-    <p class="meta">Nothing happened? Make sure CrewMate is installed on this iPhone, then tap again.</p>
+    <p class="meta">Nothing happened? Make sure CrewMate is installed, then tap again.</p>
     <p class="note">This link works once. If CrewMate says it has expired, tap <strong>Forgot password</strong> in CrewMate to get a new one.</p>
   </section>
 
@@ -104,6 +104,11 @@
   var appLink = 'crewmate://reset-password?token_hash=' + encodeURIComponent(hash) + '&type=recovery';
   document.getElementById('open-phone').href = appLink;
   document.getElementById('open-computer').href = appLink;
+  // The link is now held in the button and QR; drop it from the address bar
+  // and this tab's history so a shared computer doesn't keep it on show.
+  // (The browser's global history still records the visited URL; a page
+  // cannot remove that.)
+  try { history.replaceState(null, '', window.location.pathname); } catch (e) { /* ignore */ }
 
   if (isAppleMobile()) { show('state-phone'); return; }
 
