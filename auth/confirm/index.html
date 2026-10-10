@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Confirm your email — CrewMate</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self'; img-src 'self' data:; connect-src https://afpchpaurfswhfuktadp.supabase.co https://alzsdnhnvruijulvxcjd.supabase.co; base-uri 'none'; form-action 'none'">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="/auth/bridge.css">
+<!--
+  Sign-up confirmation bridge. The email link lands here:
+    /auth/confirm/?token_hash=<hash>&type=email          (production)
+    /auth/confirm/?token_hash=<hash>&type=email&p=t      (TEST project)
+  Nothing is sent on page load (email scanners pre-open links). Only the
+  "Confirm my email" button calls Supabase Auth POST /auth/v1/verify with the
+  project's PUBLISHABLE key (public by design). The session that comes back is
+  ignored and never stored: the person signs in inside the app afterwards.
+-->
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="wrap">
+<header class="brand"><span class="name">CrewMate</span></header>
+<main id="main">
+  <noscript><div class="card"><h1>Confirm your email</h1><p class="lead">This page needs JavaScript to confirm your email. Please turn it on, or open this email on your iPhone.</p></div></noscript>
+
+  <section class="card" id="state-ask" hidden aria-labelledby="h-ask">
+    <h1 id="h-ask">Confirm your email</h1>
+    <p class="lead">Tap the button to finish setting up your CrewMate account.</p>
+    <button type="button" class="btn" id="confirm-btn">Confirm my email</button>
+    <p class="status" id="status" role="status" aria-live="polite"></p>
+  </section>
+
+  <section class="card" id="state-done" hidden aria-labelledby="h-done" tabindex="-1">
+    <h1 id="h-done">Email confirmed</h1>
+    <p class="lead">Open CrewMate and sign in.</p>
+    <a class="btn open-app" href="crewmate://">Open CrewMate</a>
+    <p class="meta on-computer">On a computer? Open CrewMate on your iPhone and sign in there.</p>
+  </section>
+
+  <section class="card" id="state-used" hidden aria-labelledby="h-used" tabindex="-1">
+    <h1 id="h-used">This link was already used or has expired</h1>
+    <p class="lead">Sign in to CrewMate — if it asks, request a new email.</p>
+    <a class="btn open-app" href="crewmate://">Open CrewMate</a>
+    <p class="meta on-computer">On a computer? Open CrewMate on your iPhone and sign in there.</p>
+  </section>
+
+  <section class="card" id="state-bad" hidden aria-labelledby="h-bad">
+    <h1 id="h-bad">This link is incomplete</h1>
+    <p class="lead">Open CrewMate and sign in — if it asks, request a new email.</p>
+    <a class="btn open-app" href="crewmate://">Open CrewMate</a>
+  </section>
+</main>
+<footer class="legal">CrewMate is a product of WeisMon Holdings LLC. &nbsp;·&nbsp; Help: <a href="mailto:support@getcrewmate.app">support@getcrewmate.app</a> &nbsp;·&nbsp; <a href="/privacy/">Privacy</a></footer>
+</div>
+<script>
+(function () {
+  'use strict';
+  // Only these two projects. Publishable keys are public by design
+  // (Supabase "publishable" key; safe in a web page).
+  var PROJECTS = {
+    prod: { url: 'https://afpchpaurfswhfuktadp.supabase.co', key: 'sb_publishable_1LYzzxZoA-qB6frc34xKLA_I7jgiAg9' },
+    t:    { url: 'https://alzsdnhnvruijulvxcjd.supabase.co', key: 'sb_publishable_5YtiYc6Wd7IO6WKqXCj2XQ_18_b6TOW' }
+  };
+  var HASH_OK = /^(pkce_)?[A-Za-z0-9_-]{6,200}$/;
+  var TYPES = { email: 1, signup: 1 };
+  var STATES = ['state-ask', 'state-done', 'state-used', 'state-bad'];
+
+  function show(id, focus) {
+    STATES.forEach(function (s) { document.getElementById(s).hidden = s !== id; });
+    if (focus) document.getElementById(id).focus();
+  }
+
+  function isAppleMobile() {
+    var ua = navigator.userAgent || '';
+    if (/iPhone|iPad|iPod/.test(ua)) return true;
+    return /Macintosh/.test(ua) && (navigator.maxTouchPoints || 0) > 1;
+  }
+
+  // "Open CrewMate" only makes sense on the phone; the computer gets a sentence.
+  var mobile = isAppleMobile();
+  Array.prototype.forEach.call(document.querySelectorAll('.open-app'), function (a) { a.hidden = !mobile; });
+  Array.prototype.forEach.call(document.querySelectorAll('.on-computer'), function (p) { p.hidden = mobile; });
+
+  var q = new URLSearchParams(window.location.search);
+  var hash = q.get('token_hash') || '';
+  var type = q.get('type') || '';
+  var p = q.get('p');
+  var project = (p === null || p === '' || p === 'prod') ? PROJECTS.prod : (p === 't' ? PROJECTS.t : null);
+  if (!project || !HASH_OK.test(hash) || !TYPES[type]) { show('state-bad'); return; }
+
+  // Drop the one-time hash from the address bar once we have a final answer,
+  // so a reload or a shared screenshot does not carry it.
+  function forgetLink() {
+    try { history.replaceState(null, '', window.location.pathname); } catch (e) { /* ignore */ }
+  }
+
+  var btn = document.getElementById('confirm-btn');
+  var status = document.getElementById('status');
+  show('state-ask');
+
+  btn.addEventListener('click', function () {
+    if (btn.disabled) return;
+    btn.disabled = true;
+    status.className = 'status';
+    status.textContent = 'Confirming…';
+    var ctl = ('AbortController' in window) ? new AbortController() : null;
+    var timer = setTimeout(function () { if (ctl) ctl.abort(); }, 15000);
+    fetch(project.url + '/auth/v1/verify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'apikey': project.key },
+      body: JSON.stringify({ type: type, token_hash: hash }),
+      credentials: 'omit',
+      cache: 'no-store',
+      referrerPolicy: 'no-referrer',
+      signal: ctl ? ctl.signal : undefined
+    }).then(function (res) {
+      clearTimeout(timer);
+      // The response body (a session) is deliberately never read or stored.
+      if (res.ok) { forgetLink(); show('state-done', true); return; }
+      if (res.status >= 400 && res.status < 500 && res.status !== 429) { forgetLink(); show('state-used', true); return; }
+      throw new Error('server ' + res.status);
+    }).catch(function () {
+      clearTimeout(timer);
+      btn.disabled = false;
+      status.className = 'status bad';
+      status.textContent = 'We couldn’t reach CrewMate just now. Check your connection and tap Confirm my email again.';
+    });
+  });
+})();
+</script>
+</body>
+</html>
