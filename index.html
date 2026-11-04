@@ -3,47 +3,76 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CrewMate</title>
+<title>CrewMate: the app for working airline crew</title>
+<meta name="description" content="CrewMate is an iPhone app for flight attendants and pilots: your schedule, your flight, your commute and your layover in one place.">
+<meta name="apple-itunes-app" content="app-id=6776444100">
 <style>
-  :root{--navy:#1B2A4A;--brass:#B08D57;--ink:#23262D;--muted:#5A5F6B;--line:#E3E1DA;--bg:#FBFAF7;--soft:#F4F2EC;}
-  *{box-sizing:border-box;} html{-webkit-text-size-adjust:100%;}
-  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;font-size:16px;}
-  .wrap{max-width:760px;margin:0 auto;padding:32px 22px 80px;}
-  header.brand{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--brass);padding-bottom:14px;margin-bottom:8px;}
-  .brand .name{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--brass);font-weight:700;}
-  .brand nav a{font-size:13px;color:var(--brass);text-decoration:none;}
-  .brand nav a:hover{color:var(--navy);text-decoration:underline;}
-  .brand nav .sep{color:var(--muted);font-size:13px;}
-  h1{color:var(--navy);font-size:30px;line-height:1.2;margin:.35em 0 .15em;}
-  h2{color:var(--navy);font-size:20px;margin:1.8em 0 .5em;}
-  h3{color:var(--navy);font-size:16px;margin:1.3em 0 .4em;}
-  a{color:var(--brass);}
-  .meta{color:var(--muted);font-size:13.5px;margin:.2em 0 0;}
-  hr{border:none;border-top:1px solid var(--line);margin:1.8em 0;}
-  table{width:100%;border-collapse:collapse;margin:1em 0;font-size:14.5px;display:block;overflow-x:auto;}
-  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top;}
-  th{background:var(--navy);color:#fff;font-weight:600;}
-  tr:nth-child(even) td{background:var(--soft);}
-  blockquote{background:#FFF7EC;border:1px solid var(--brass);border-left:5px solid var(--brass);border-radius:8px;margin:1.2em 0;padding:14px 18px;color:#5b4a30;}
-  blockquote p{color:#5b4a30;} blockquote strong{color:#3d2f17;}
-  code{background:var(--soft);padding:1px 5px;border-radius:4px;font-size:90%;}
-  footer.legal{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;}
-  @media (max-width:520px){h1{font-size:25px;} .wrap{padding:24px 16px 64px;} header.brand{flex-direction:column;gap:6px;} .brand nav a{margin:0 14px 0 0;}}
+ :root{--navy:#1B2A4A;--brass:#B08D57;--ink:#23262D;--muted:#5A5F6B;--line:#E3E1DA;--bg:#FBFAF7;--soft:#F4F2EC;}
+ *{box-sizing:border-box;} html{-webkit-text-size-adjust:100%;}
+ body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;font-size:16px;}
+ .wrap{max-width:760px;margin:0 auto;padding:32px 22px 80px;}
+ header.brand{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--brass);padding-bottom:14px;margin-bottom:8px;}
+ .brand .name{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--brass);font-weight:700;}
+ .brand nav a{font-size:13px;color:var(--brass);text-decoration:none;}
+ .brand nav a:hover{color:var(--navy);text-decoration:underline;}
+ .brand nav .sep{color:var(--muted);font-size:13px;}
+ h1{color:var(--navy);font-size:32px;line-height:1.2;margin:.6em 0 .3em;}
+ h2{color:var(--navy);font-size:20px;margin:1.8em 0 .5em;}
+ a{color:var(--brass);}
+ .lead{font-size:18px;color:var(--ink);margin:0 0 1.2em;}
+ .meta{color:var(--muted);font-size:13.5px;margin:.2em 0 0;}
+ .cta{display:inline-block;background:var(--navy);color:#fff;text-decoration:none;font-weight:600;padding:13px 22px;border-radius:10px;font-size:16px;}
+ .cta:hover{background:#24375f;}
+ .price{color:var(--muted);font-size:14px;margin:.8em 0 0;}
+ ul.feat{padding-left:1.1em;margin:.4em 0;}
+ ul.feat li{margin:.35em 0;}
+ .box{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:1em 0;}
+ .tag{display:inline-block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--brass);font-weight:700;}
+ hr{border:none;border-top:1px solid var(--line);margin:1.8em 0;}
+ footer.legal{color:var(--muted);font-size:13px;margin-top:2em;}
 </style>
 </head>
 <body>
 <div class="wrap">
-<header class="brand"><span class="name">CrewMate</span><nav><a href="/privacy/">Privacy</a><span class="sep">&nbsp;|&nbsp;</span><a href="/terms/">Terms</a></nav></header>
-<h1>CrewMate</h1>
-<p class="meta">Operational tools for airline cabin crew and flight crew.</p>
-<hr>
-<p>Legal:</p>
-<ul>
-  <li><a href="/privacy/">Privacy Policy</a></li>
-  <li><a href="/terms/">Terms of Use</a></li>
+<header class="brand"><span class="name">CrewMate</span><nav><a href="/support/">Support</a><span class="sep">&nbsp;|&nbsp;</span><a href="/privacy/">Privacy</a><span class="sep">&nbsp;|&nbsp;</span><a href="/terms/">Terms</a></nav></header>
+
+<h1>Your trip, your flight and your layover. One app, built for crew.</h1>
+<p class="lead">CrewMate is an iPhone app for flight attendants and pilots. It's not a passenger flight tracker. It's built around your schedule, your report time and your rest.</p>
+<p><a class="cta" href="https://apps.apple.com/us/app/getcrewmate/id6776444100">Download on the App Store</a></p>
+<p class="price">Free to download. CrewMate Premium is $7.99 a month or $59.99 a year.</p>
+
+<h2>Free for every crew member</h2>
+<ul class="feat">
+  <li><strong>Your schedule:</strong> import trips from your calendar, or add them by hand, with your history and stats.</li>
+  <li><strong>Rest tools:</strong> a rest legalities calculator and an in-flight rest planner.</li>
+  <li><strong>Pilot logbook.</strong></li>
+  <li><strong>Commuting backup:</strong> Plan B, for when a commute falls through.</li>
+  <li><strong>Layover tools:</strong> nearby places, currency, bill and tip splitter, unit converter.</li>
+  <li><strong>Translator</strong> in 25 languages.</li>
+  <li><strong>Emergency</strong> numbers and help, always free.</li>
+  <li><strong>Jumpseat countdown, seniority tracking and private crew notes.</strong></li>
 </ul>
-<p class="meta">Questions? <a href="mailto:support@getcrewmate.app">support@getcrewmate.app</a></p>
-<footer class="legal">CrewMate is a product of WeisMon Holdings LLC. &nbsp;·&nbsp; Contact: <a href="mailto:support@getcrewmate.app">support@getcrewmate.app</a></footer>
+
+<div class="box">
+<span class="tag">CrewMate Premium</span>
+<h2 style="margin-top:.3em">For the days that don't go to plan</h2>
+<ul class="feat">
+  <li><strong>What a delay means for you:</strong> CrewMate tells you how a flight change affects your duty, your rest and your day.</li>
+  <li><strong>Your flight, live:</strong> status, timeline, route and turbulence ahead.</li>
+  <li><strong>On your lock screen:</strong> follow your flight without opening the app.</li>
+  <li><strong>"Will I make report?":</strong> commute readiness for your report time.</li>
+  <li><strong>The inbound aircraft</strong> you're waiting on, plus a watchlist of other flights.</li>
+  <li><strong>Ask Eddie:</strong> an assistant for layover questions.</li>
+</ul>
+</div>
+
+<h2>Honest by design</h2>
+<p>Live information in CrewMate shows where it comes from and how fresh it is. When a source is missing or late, the app says so instead of guessing. CrewMate is a planning aid, not your airline's official system. Always check anything operational with your airline.</p>
+<p>No third-party advertising and no tracking across other apps.</p>
+
+<hr>
+<p class="meta">Questions? <a href="mailto:support@getcrewmate.app">support@getcrewmate.app</a> · <a href="/support/">Help and subscriptions</a></p>
+<footer class="legal">CrewMate is a product of WeisMon Holdings LLC. Not affiliated with any airline. &nbsp;·&nbsp; <a href="/privacy/">Privacy Policy</a> · <a href="/terms/">Terms of Use</a></footer>
 </div>
 </body>
 </html>
