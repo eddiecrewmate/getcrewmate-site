@@ -49,7 +49,7 @@
 <main id="main">
 <h1>CrewMate — Privacy Policy</h1>
 <p><strong>Effective date:</strong> June 29, 2026<br />
-<strong>Last updated:</strong> October 27, 2026<br />
+<strong>Last updated:</strong> November 6, 2026<br />
 <strong>Canonical URL:</strong> https://getcrewmate.app/privacy/</p>
 <hr />
 <h2>1. Who we are</h2>
@@ -58,7 +58,7 @@
 <p>This policy explains what personal information CrewMate collects, how we use it, who we share it with, how long we keep it, and the choices and rights you have.</p>
 <hr />
 <h2>2. Scope</h2>
-<p>This policy applies to the CrewMate mobile application and the services it connects to. It is written for our current launch audience in the <strong>United States</strong>. CrewMate is <strong>not directed to children under 13</strong>, and we do not knowingly collect personal information from children under 13. CrewMate is a professional tool for working aircrew. <em>(If you believe a child under 13 has provided us personal information, contact support@getcrewmate.app and we will delete it.)</em></p>
+<p>This policy applies to the CrewMate mobile application on <strong>iPhone</strong> (downloaded from Apple's App Store) and on <strong>Android</strong> (downloaded from Google Play), and to the services it connects to. Where the two versions handle data differently, this policy says so. It is written for our current launch audience in the <strong>United States</strong>. CrewMate is <strong>not directed to children under 13</strong>, and we do not knowingly collect personal information from children under 13. CrewMate is a professional tool for working aircrew. <em>(If you believe a child under 13 has provided us personal information, contact support@getcrewmate.app and we will delete it.)</em></p>
 <hr />
 <h2>3. Information we collect</h2>
 <h3>3.1 Information you provide</h3>
@@ -177,13 +177,23 @@
 <td>The airline code + flight number you look up</td>
 <td>Sent to our flight-data provider to retrieve public flight information. <strong>The query contains no personal information.</strong></td>
 </tr>
+<tr>
+<td>Flight alerts (push notifications)</td>
+<td>Your device's push token (a random identifier for delivering notifications to your phone) and whether your phone runs iPhone or Android</td>
+<td>Only collected if you turn on an alert and allow notifications. Stored in our Supabase database with your account so the alert can reach your phone; alerts are delivered through Expo's push service, which passes them to Apple's push service (iPhone) or Google's Firebase Cloud Messaging (Android). Deleted when you sign out on that phone or delete your account.</td>
+</tr>
+<tr>
+<td>Maps</td>
+<td>The map area shown on your screen, and your device's network address, as part of loading map images</td>
+<td>Map images are loaded from Mapbox. CrewMate turns off Mapbox's own usage and location data collection ("telemetry") in the app, on iPhone and Android, so Mapbox does not receive your location from CrewMate for its own purposes.</td>
+</tr>
 </tbody>
 </table>
 </div>
 <h3>3.4 On-device only</h3>
 <p>Your conversation history with the in-app assistant ("Eddie") is stored <strong>only on your device</strong> for up to 7 days and is <strong>not</strong> stored on our servers. Each message you send is transmitted to our AI provider to generate a response.</p>
 <h3>3.5 What we do <strong>not</strong> collect</h3>
-<p>We do <strong>not</strong> collect: your payment-card or bank-account details — if you purchase a Premium subscription, Apple processes the payment and CrewMate never receives your card number (see "Premium subscriptions" below); passport, visa, or government-ID data; health or biometric data; your contacts/address book; your photo library beyond a photo you explicitly hand to the Translator feature; advertising identifiers; or any third-party / behavioral-advertising analytics.</p>
+<p>We do <strong>not</strong> collect: your payment-card or bank-account details — if you purchase a Premium subscription, Apple (on iPhone) or Google Play (on Android) processes the payment and CrewMate never receives your card number (see "Premium subscriptions" below); passport, visa, or government-ID data; health or biometric data; your contacts/address book; your photo library beyond a photo you explicitly hand to the Translator feature; advertising identifiers; or any third-party / behavioral-advertising analytics.</p>
 <h3>3.6 First-run onboarding</h3>
 <p>When you first open CrewMate, the onboarding experience is <strong>local to your device and manual</strong> — you add your first trip yourself. First-run onboarding does <strong>not</strong> sync your phone calendar and does <strong>not</strong> request calendar permission.</p>
 <hr />
@@ -260,6 +270,21 @@
 <td>Crash/error diagnostics — the client excludes email and username from the report's user context (<code>sendDefaultPii</code> off) and includes your internal account identifier; server-side handling of network metadata such as IP address follows Sentry's configuration and terms</td>
 <td>Crash and error monitoring</td>
 </tr>
+<tr>
+<td>Mapbox</td>
+<td>The map area being displayed and your device's network address (map-image requests); Mapbox telemetry is switched off in the app</td>
+<td>Map display</td>
+</tr>
+<tr>
+<td>Expo (push service), Apple Push Notification service, Google Firebase Cloud Messaging</td>
+<td>Your device's push token and the alert text</td>
+<td>Delivering the flight alerts you turn on</td>
+</tr>
+<tr>
+<td>Google Play (Android only)</td>
+<td>Purchase and subscription information for Premium bought on Android (see §5A)</td>
+<td>Selling, renewing and managing Premium subscriptions on Android</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -267,11 +292,12 @@
 <p>We may also disclose information if required by law, to enforce our Terms, or to protect the rights, safety, or property of CrewMate, our users, or others.</p>
 <hr />
 <h2>5A. Premium subscriptions (if offered)</h2>
-<p>If CrewMate offers Premium subscriptions and you subscribe, we process purchase and subscription information from Apple's App Store so we can deliver and manage your subscription. This includes: the subscription <strong>product identifier</strong>; Apple <strong>transaction identifiers</strong> (the original and latest transaction IDs); your <strong>subscription and entitlement status</strong>; <strong>purchase and expiration dates</strong>; <strong>auto-renewal, billing-grace-period, refund, and revocation</strong> information; an <strong>app-account token</strong> that links your purchase to your CrewMate account; and the <strong>App Store server-notification records</strong> Apple sends us about your subscription's lifecycle.</p>
-<p><strong>Payment method.</strong> Apple, not CrewMate, processes your payment. <strong>CrewMate does not receive or store your credit-card number or other payment-card details.</strong> We do process the purchase and subscription history described above.</p>
+<p>If CrewMate offers Premium subscriptions and you subscribe, we process purchase and subscription information from the store you bought through, so we can deliver and manage your subscription. <strong>On iPhone (Apple's App Store)</strong> this includes: the subscription <strong>product identifier</strong>; Apple <strong>transaction identifiers</strong> (the original and latest transaction IDs); your <strong>subscription and entitlement status</strong>; <strong>purchase and expiration dates</strong>; <strong>auto-renewal, billing-grace-period, refund, and revocation</strong> information; an <strong>app-account token</strong> that links your purchase to your CrewMate account; and the <strong>App Store server-notification records</strong> Apple sends us about your subscription's lifecycle.</p>
+<p><strong>On Android (Google Play)</strong> this includes: the subscription <strong>product identifier</strong>; the Google Play <strong>purchase token</strong> (and, if you change plans, the token of the earlier purchase); whether the purchase was a real or test purchase; your <strong>subscription and entitlement status</strong>; <strong>purchase and expiration dates</strong>; <strong>auto-renewal, grace-period, cancellation, refund, and revocation</strong> information, which our server reads from Google's Play Developer API; a link between the purchase token and your CrewMate account; and the <strong>real-time notification records</strong> Google Play sends us about your subscription's lifecycle.</p>
+<p><strong>Payment method.</strong> Apple (on iPhone) or Google (on Android), not CrewMate, processes your payment. <strong>CrewMate does not receive or store your credit-card number or other payment-card details.</strong> We do process the purchase and subscription history described above.</p>
 <p><strong>How this data is used.</strong> Only to: deliver your Premium entitlement, restore your purchases, handle renewals, grace periods, refunds, and revocations, keep the subscription secure, provide support, reconcile our records, and meet legal and compliance obligations. It is <strong>not</strong> used for advertising.</p>
-<p><strong>Apple as the purchase platform and data source.</strong> Apple / the App Store is the platform through which any subscription is purchased and a source of the data above; Apple's own handling of your payment and Apple Account is governed by Apple's privacy policy.</p>
-<p><strong>Account deletion.</strong> If you delete your account, your subscription-entitlement record and the transaction-identity binding are deleted with it. For the subscription-notification records Apple has sent us, CrewMate removes the direct account association from those retained records. Limited Apple transaction and notification identifiers may remain for security, reconciliation, fraud prevention, dispute handling, and legally required recordkeeping. These retained identifiers are not used for advertising.</p>
+<p><strong>Apple and Google as the purchase platforms and data sources.</strong> Apple's App Store (iPhone) and Google Play (Android) are the platforms through which a subscription is purchased and the sources of the data above. Apple's handling of your payment and Apple Account is governed by Apple's privacy policy; Google's handling of your payment and Google Account is governed by Google's privacy policy. Premium is tied to your CrewMate account, so a subscription bought on one platform also unlocks Premium when you sign in to the same CrewMate account on the other.</p>
+<p><strong>Account deletion.</strong> If you delete your account, your subscription-entitlement record and the transaction-identity binding (on Android, the link between your Google Play purchase token and your account) are deleted with it. For the subscription-notification records Apple or Google has sent us, CrewMate removes the direct account association from those retained records. Limited Apple or Google transaction and notification identifiers may remain for security, reconciliation, fraud prevention, dispute handling, and legally required recordkeeping. These retained identifiers are not used for advertising.</p>
 <hr />
 <h2>6. How long we keep your information</h2>
 <div class="table-wrap" role="region" aria-label="Data table — scroll horizontally to view all columns" tabindex="0">
@@ -304,6 +330,10 @@
 <td>Not retained by CrewMate (transient)</td>
 </tr>
 <tr>
+<td>Push token (flight alerts)</td>
+<td>Until you sign out on that phone, the token stops working, or you delete your account</td>
+</tr>
+<tr>
 <td>Crash/error reports</td>
 <td>Per Sentry's retention settings (the client excludes email and username from the report's user context before sending)</td>
 </tr>
@@ -314,7 +344,7 @@
 <h2>7. Your choices and rights</h2>
 <ul>
 <li><strong>Access</strong> — You can view your data inside the app (your schedule, profile, and assistant history). For a formal export, contact <strong>support@getcrewmate.app</strong>.</li>
-<li><strong>Deletion</strong> — You can delete your account from within the app (Account screen → Delete account). Deleting your account removes your account record and <strong>cascades to permanently delete</strong> your profile, schedule, layovers, events, and analytics events. If you have subscribed to Premium, see "Premium subscriptions" (§5A) for how subscription and Apple notification records are handled on deletion. You may also request deletion by emailing <strong>support@getcrewmate.app</strong>.</li>
+<li><strong>Deletion</strong> — You can delete your account from within the app (Account screen → Delete account). Deleting your account removes your account record and <strong>cascades to permanently delete</strong> your profile, schedule, layovers, events, and analytics events. If you have subscribed to Premium, see "Premium subscriptions" (§5A) for how subscription and Apple or Google notification records are handled on deletion. Deleting your CrewMate account does <strong>not</strong> cancel a store subscription: cancel it in your Apple Account settings (iPhone) or in the Google Play Store app under Payments &amp; subscriptions (Android). The steps are also on our <a href="/support/#delete-account">support page</a>. You may also request deletion by emailing <strong>support@getcrewmate.app</strong>.</li>
 <li><strong>Do Not Sell or Share</strong> — CrewMate does <strong>not</strong> sell or share your personal information for advertising, so no opt-out is needed. We state this here for the avoidance of doubt.</li>
 <li><strong>California residents (CCPA)</strong> — California residents have rights to know, access, and delete their personal information, and not to be discriminated against for exercising them. The access and deletion mechanisms above apply to you; contact <strong>support@getcrewmate.app</strong> for any request.</li>
 </ul>
