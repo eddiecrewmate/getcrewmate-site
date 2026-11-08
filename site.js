@@ -117,7 +117,7 @@ async function start() {
   const loader = new THREE.TextureLoader();
   const aniso = renderer.capabilities.getMaxAnisotropy();
   const tex = n => { const t = loader.load(`img/${n}.jpg`); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = aniso; return t; };
-  const screens = ['commute', 'flight-live', 'turbulence', 'toolkit'].map(tex);
+  const screens = ['commute', 'flight-live', 'lockscreen', 'turbulence', 'toolkit'].map(tex);
   const screen = new THREE.Mesh(screenG, new THREE.MeshBasicMaterial({ map: screens[0], toneMapped: false }));
   screen.position.z = DEPTH / 2 + 0.03; phone.add(screen);
   // Back of the phone: the app icon.
