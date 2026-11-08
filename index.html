@@ -1,182 +1,94 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no3d">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CrewMate: the app for working airline crew</title>
-<meta name="description" content="CrewMate is an iPhone app for flight attendants and pilots: your schedule, your flight, your commute and your layover in one place.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GetCrewMate: the app for working airline crew</title>
+<meta name="description" content="The day never goes to plan. GetCrewMate is an iPhone app for flight attendants and pilots: your commute, your flight, your rest and your layover in one place.">
 <meta name="apple-itunes-app" content="app-id=6776444100">
 <meta name="theme-color" content="#0E1628">
-<meta property="og:title" content="CrewMate: the app for working airline crew">
-<meta property="og:description" content="Your flight live, turbulence ahead, your commute options and your crew tools. Built for flight attendants and pilots.">
-<meta property="og:image" content="https://getcrewmate.app/img/icon-192.png">
+<meta property="og:title" content="GetCrewMate: the app for working airline crew">
+<meta property="og:description" content="The day never goes to plan. GetCrewMate is built for that. Your commute, your flight live, turbulence ahead and your crew tools, for flight attendants and pilots.">
+<meta property="og:image" content="https://getcrewmate.app/img/og.jpg">
 <meta property="og:url" content="https://getcrewmate.app/">
-<link rel="icon" href="/favicon.png">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<style>
- :root{
-  --bg:#0E1628; --bg2:#121C33; --card:#17223B; --line:#26324D;
-  --ink:#EEF1F6; --muted:#9AA6BC; --brass:#C9A66B; --brass2:#E2C48F; --cyan:#4CC9F0;
- }
- *{box-sizing:border-box}
- html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
- body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.55;font-size:17px;-webkit-font-smoothing:antialiased}
- a{color:var(--brass2)}
- img{display:block;max-width:100%}
- .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
-
- /* nav */
- .nav{position:sticky;top:0;z-index:10;background:rgba(14,22,40,.86);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--line)}
- .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
- .logo{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:700;letter-spacing:.01em;font-size:18px}
- .logo img{width:32px;height:32px;border-radius:8px}
- .nav nav{display:flex;align-items:center;gap:22px}
- .nav nav a{color:var(--muted);text-decoration:none;font-size:15px}
- .nav nav a:hover{color:var(--ink)}
- .nav .get{color:var(--bg);background:var(--brass);padding:8px 14px;border-radius:999px;font-weight:600}
- .nav .get:hover{color:var(--bg);background:var(--brass2)}
-
- /* hero */
- .hero{position:relative;overflow:hidden;padding:72px 0 40px}
- .hero:before{content:"";position:absolute;inset:-30% -10% auto auto;width:760px;height:760px;background:radial-gradient(closest-side,rgba(76,201,240,.16),transparent 70%);pointer-events:none}
- .hero:after{content:"";position:absolute;inset:auto auto -40% -15%;width:700px;height:700px;background:radial-gradient(closest-side,rgba(201,166,107,.14),transparent 70%);pointer-events:none}
- .hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
- .eyebrow{display:inline-block;color:var(--brass);font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px}
- h1{font-size:56px;line-height:1.05;letter-spacing:-.02em;margin:0 0 20px;font-weight:800}
- h1 em{font-style:normal;color:var(--brass2)}
- .lead{font-size:20px;color:var(--muted);max-width:34em;margin:0 0 30px}
- .cta-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
- .badge img{height:54px;width:auto}
- .price{color:var(--muted);font-size:15px;margin:16px 0 0}
- .price b{color:var(--ink);font-weight:600}
-
- /* phones */
- .phones{position:relative;height:640px}
- .phone{position:absolute;width:290px;border-radius:44px;padding:10px;background:linear-gradient(160deg,#2B3756,#141C30);box-shadow:0 40px 80px -20px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.06) inset}
- .phone img{border-radius:34px;width:100%;height:auto}
- .phones .p1{right:150px;top:0;z-index:2}
- .phones .p2{right:0;top:90px;transform:rotate(4deg);opacity:.96}
-
- /* trust strip */
- .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg2)}
- .strip .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding-top:26px;padding-bottom:26px}
- .strip div{display:flex;gap:12px;align-items:flex-start;color:var(--muted);font-size:15px}
- .strip b{display:block;color:var(--ink);font-size:16px;margin-bottom:2px}
- .dot{flex:0 0 auto;width:10px;height:10px;border-radius:50%;background:var(--brass);margin-top:8px}
-
- /* features */
- section.feat{padding:96px 0}
- section.feat + section.feat{padding-top:24px}
- .row{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
- .row.flip .shot{order:2}
- .shot{display:flex;justify-content:center}
- .shot .phone{position:relative;width:300px}
- .tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;border-radius:999px;margin-bottom:16px}
- .tag.prem{color:var(--bg);background:var(--brass)}
- .tag.free{color:var(--cyan);border:1px solid rgba(76,201,240,.5)}
- h2{font-size:40px;line-height:1.1;letter-spacing:-.015em;margin:0 0 16px;font-weight:800}
- .feat p{color:var(--muted);font-size:18px;margin:0 0 18px;max-width:30em}
- .ticks{list-style:none;padding:0;margin:0}
- .ticks li{position:relative;padding-left:28px;margin:10px 0;color:var(--ink)}
- .ticks li:before{content:"";position:absolute;left:0;top:9px;width:14px;height:8px;border-left:2px solid var(--brass);border-bottom:2px solid var(--brass);transform:rotate(-45deg)}
-
- /* plans */
- .plans{padding:96px 0;background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
- .center{text-align:center}
- .center p.sub{color:var(--muted);font-size:18px;margin:0 auto 44px;max-width:36em}
- .cards{display:grid;grid-template-columns:1fr 1fr;gap:24px}
- .card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:32px}
- .card.premium{border-color:rgba(201,166,107,.55);background:linear-gradient(180deg,rgba(201,166,107,.10),rgba(201,166,107,0) 40%),var(--card)}
- .card h3{margin:0 0 4px;font-size:24px}
- .card .amt{color:var(--muted);margin:0 0 20px;font-size:16px}
- .card .amt b{color:var(--ink);font-size:28px;font-weight:800}
- .card .ticks li{font-size:16px}
- .fine{color:var(--muted);font-size:13.5px;margin-top:22px;text-align:center}
-
- /* honest */
- .honest{padding:96px 0}
- .honest .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:8px}
- .honest .grid div{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px}
- .honest h3{margin:0 0 8px;font-size:18px}
- .honest .grid p{margin:0;color:var(--muted);font-size:15.5px}
-
- /* final */
- .final{padding:40px 0 96px}
- .final .box{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;background:linear-gradient(120deg,#1B2747,#121C33);border:1px solid var(--line);border-radius:26px;padding:40px}
- .final h2{font-size:32px;margin:0 0 6px}
- .final p{margin:0;color:var(--muted)}
- .final .left{display:flex;align-items:center;gap:20px}
- .final .left img{width:72px;height:72px;border-radius:16px}
-
- footer{border-top:1px solid var(--line);padding:28px 0 48px;color:var(--muted);font-size:14px}
- footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
- footer a{color:var(--muted)}
- footer a:hover{color:var(--ink)}
-
- @media (max-width:900px){
-  h1{font-size:40px}
-  .hero{padding:40px 0 24px}
-  .hero .wrap,.row,.cards,.honest .grid,.strip .wrap{grid-template-columns:1fr}
-  .row{gap:36px}
-  .row.flip .shot{order:0}
-  .phones{height:auto;display:flex;justify-content:center}
-  .phones .p1{position:relative;right:auto;top:auto;width:270px}
-  .phones .p2{display:none}
-  h2{font-size:32px}
-  section.feat{padding:64px 0}
-  section.feat + section.feat{padding-top:8px}
-  .plans,.honest{padding:64px 0}
-  .final .box{padding:28px}
-  .nav nav a:not(.get){display:none}
- }
- @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-</style>
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="site.css">
+<script type="importmap">{"imports":{"three":"./vendor/three.module.min.js"}}</script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
+<canvas id="gl" aria-hidden="true"></canvas>
 
 <header class="nav">
  <div class="wrap">
-  <a class="logo" href="/"><img src="/img/icon-192.png" alt="">CrewMate</a>
-  <nav>
-   <a href="#features">Features</a>
-   <a href="#plans">Pricing</a>
-   <a href="/support/">Support</a>
+  <a class="logo" href="#top"><img src="img/icon-192.png" alt="" width="32" height="32">GetCrewMate</a>
+  <nav aria-label="Main">
+   <a href="#features" class="opt">Features</a>
+   <a href="#film" class="opt">Film</a>
+   <a href="#plans" class="opt">Pricing</a>
    <a class="get" href="https://apps.apple.com/us/app/getcrewmate/id6776444100">Get the app</a>
   </nav>
  </div>
 </header>
 
-<main>
-<section class="hero">
+<main id="main">
+
+<section class="hero clear" id="top">
  <div class="wrap">
-  <div>
+  <div class="hero-copy">
    <span class="eyebrow">For flight attendants and pilots</span>
-   <h1>Your trip, your flight, your layover. <em>One app, built for crew.</em></h1>
-   <p class="lead">CrewMate is built around your schedule, your report time and your rest. It's not a passenger flight tracker.</p>
-   <div class="cta-row">
-    <a class="badge" href="https://apps.apple.com/us/app/getcrewmate/id6776444100" aria-label="Download CrewMate on the App Store"><img src="/img/app-store-badge.svg" alt="Download on the App Store" width="162" height="54"></a>
-   </div>
+   <h1>The day never goes to plan. <em>GetCrewMate is built for that.</em></h1>
+   <p class="lead">Your commute, your flight, your rest and your layover in one iPhone app. Built for working crew, not passengers.</p>
+   <a class="badge" href="https://apps.apple.com/us/app/getcrewmate/id6776444100" aria-label="Download GetCrewMate on the App Store"><img src="img/app-store-badge.svg" alt="Download on the App Store" width="162" height="54"></a>
    <p class="price"><b>Free to download.</b> Premium is $7.99 a month or $59.99 a year.</p>
   </div>
-  <div class="phones" aria-hidden="true">
-   <div class="phone p2"><picture><source srcset="/img/turbulence.webp" type="image/webp"><img src="/img/turbulence.jpg" alt="" width="660" height="1434"></picture></div>
-   <div class="phone p1"><picture><source srcset="/img/flight-live.webp" type="image/webp"><img src="/img/flight-live.jpg" alt="" width="660" height="1434"></picture></div>
-  </div>
+ </div>
+ <div class="hint" aria-hidden="true"><span></span></div>
+</section>
+
+<section class="story" id="story" aria-label="A day in the life of crew">
+ <div class="stage">
+  <figure class="beat">
+   <picture><source media="(max-aspect-ratio: 1/1)" srcset="img/scene/dawn-v.jpg"><img src="img/scene/dawn.jpg" alt="A flight attendant walks through an empty terminal at dawn with her roller bag" loading="lazy"></picture>
+   <figcaption>Your day starts <em>before the sun does.</em></figcaption>
+  </figure>
+  <figure class="beat">
+   <picture><source media="(max-aspect-ratio: 1/1)" srcset="img/scene/dash-v.jpg"><img src="img/scene/dash.jpg" alt="A flight attendant hurries through a closed concourse at night" loading="lazy"></picture>
+   <figcaption>Then a delay <em>moves everything.</em></figcaption>
+  </figure>
+  <figure class="beat">
+   <picture><source media="(max-aspect-ratio: 1/1)" srcset="img/scene/pilot-rain-v.jpg"><img src="img/scene/pilot-rain.jpg" alt="A pilot checks his phone beside a rain-streaked window" loading="lazy"></picture>
+   <figcaption>The gate changes. The weather changes. <em>You still have to get there.</em></figcaption>
+  </figure>
+  <figure class="beat">
+   <picture><source media="(max-aspect-ratio: 1/1)" srcset="img/scene/galley-v.jpg"><img src="img/scene/galley.jpg" alt="A flight attendant checks her phone in the galley and looks relieved" loading="lazy"></picture>
+   <figcaption>GetCrewMate <em>keeps up.</em></figcaption>
+  </figure>
  </div>
 </section>
 
-<div class="strip">
- <div class="wrap">
-  <div><span class="dot"></span><span><b>Shows its sources</b>Every live number says where it came from and how fresh it is.</span></div>
-  <div><span class="dot"></span><span><b>Built for working crew</b>Your duty, rest, commute and layover, not a passenger's trip.</span></div>
-  <div><span class="dot"></span><span><b>No ads, no tracking</b>No third-party advertising and no tracking across other apps.</span></div>
- </div>
-</div>
+<section class="features clear" id="features">
 
-<section class="feat" id="features">
- <div class="wrap row">
-  <div class="shot"><div class="phone"><picture><source srcset="/img/flight-live.webp" type="image/webp"><img src="/img/flight-live.jpg" alt="CrewMate showing a flight in the air: 7 hours 54 minutes to go, landing 2 minutes late, distance flown and to go" width="660" height="1434" loading="lazy"></picture></div></div>
-  <div>
+ <article class="chap" data-screen="0">
+  <div class="shot"><img src="img/commute.jpg" alt="GetCrewMate commute screen listing departures from Atlanta to New York with times, terminals and gates" width="660" height="1434" loading="lazy"></div>
+  <div class="card reveal">
+   <span class="tag free">Free</span>
+   <h2>Can you still get home tonight?</h2>
+   <p>Pick your airports and see the departures you can still make, with terminals, gates and connections.</p>
+   <ul class="ticks">
+    <li>Today's departures on your route</li>
+    <li>Plan B, for when a commute falls through</li>
+    <li>With Premium: "Will I make report?"</li>
+   </ul>
+  </div>
+ </article>
+
+ <article class="chap flip" data-screen="1">
+  <div class="shot"><img src="img/flight-live.jpg" alt="GetCrewMate showing a flight in the air: time to go, landing time, distance flown and to go" width="660" height="1434" loading="lazy"></div>
+  <div class="card reveal">
    <span class="tag prem">Premium</span>
    <h2>Your flight, live</h2>
    <p>See where your flight is, how long is left and whether it's running late, with the data source named on screen.</p>
@@ -186,15 +98,13 @@
     <li>Follow it on your lock screen without opening the app</li>
    </ul>
   </div>
- </div>
-</section>
+ </article>
 
-<section class="feat">
- <div class="wrap row flip">
-  <div class="shot"><div class="phone"><picture><source srcset="/img/turbulence.webp" type="image/webp"><img src="/img/turbulence.jpg" alt="CrewMate turbulence view: moderate turbulence expected in about 4 hours 55 minutes, lasting about 5 minutes, source NOAA" width="660" height="1434" loading="lazy"></picture></div></div>
-  <div>
+ <article class="chap" data-screen="2">
+  <div class="shot"><img src="img/turbulence.jpg" alt="GetCrewMate turbulence view: when turbulence is expected, how long it lasts, and its forecast source" width="660" height="1434" loading="lazy"></div>
+  <div class="card reveal">
    <span class="tag prem">Premium</span>
-   <h2>Turbulence ahead</h2>
+   <h2>Turbulence ahead, and its source</h2>
    <p>Know when the bumps are coming and for how long, so you can plan the service and your rest around them.</p>
    <ul class="ticks">
     <li>When it starts and how long it lasts</li>
@@ -202,31 +112,13 @@
     <li>The forecast source on every area</li>
    </ul>
   </div>
- </div>
-</section>
+ </article>
 
-<section class="feat">
- <div class="wrap row">
-  <div class="shot"><div class="phone"><picture><source srcset="/img/commute.webp" type="image/webp"><img src="/img/commute.jpg" alt="CrewMate commute screen listing departures from Atlanta to New York with times, terminals and gates" width="660" height="1434" loading="lazy"></picture></div></div>
-  <div>
+ <article class="chap flip" data-screen="3">
+  <div class="shot"><img src="img/toolkit.jpg" alt="GetCrewMate toolkit: duty clock, in-flight rest planner, jumpseat countdown, crew notes, seniority and more" width="660" height="1434" loading="lazy"></div>
+  <div class="card reveal">
    <span class="tag free">Free</span>
-   <h2>Commuting? See what you can still catch</h2>
-   <p>Pick your airports and see the departures you can still make, with terminals, gates and connections.</p>
-   <ul class="ticks">
-    <li>Today's departures on your route</li>
-    <li>Plan B, for when a commute falls through</li>
-    <li>With Premium: "Will I make report?"</li>
-   </ul>
-  </div>
- </div>
-</section>
-
-<section class="feat">
- <div class="wrap row flip">
-  <div class="shot"><div class="phone"><picture><source srcset="/img/toolkit.webp" type="image/webp"><img src="/img/toolkit.jpg" alt="CrewMate toolkit: Duty Clock, In-Flight Rest Planner, Jumpseat countdown, crew notes, seniority and more" width="660" height="1434" loading="lazy"></picture></div></div>
-  <div>
-   <span class="tag free">Free</span>
-   <h2>Your crew toolkit</h2>
+   <h2>Your crew toolkit, in one app</h2>
    <p>The everyday tools crew reach for, in one place.</p>
    <ul class="ticks">
     <li>Rest legalities calculator and in-flight rest planner</li>
@@ -234,10 +126,31 @@
     <li>Pilot logbook</li>
    </ul>
   </div>
+ </article>
+</section>
+
+<section class="film solid" id="film">
+ <div class="wrap">
+  <span class="eyebrow">The film</span>
+  <h2>A crew day in 32 seconds</h2>
+  <div class="player">
+   <video id="filmv" controls playsinline preload="none" poster="video/film-poster.jpg">
+    <source src="video/film-16x9.mp4" type="video/mp4">
+    Your browser can't play this video.
+   </video>
+  </div>
  </div>
 </section>
 
-<section class="plans" id="plans">
+<section class="strip solid" aria-label="What sets GetCrewMate apart">
+ <div class="wrap">
+  <div><b>Shows its sources</b>Every live number says where it came from and how fresh it is.</div>
+  <div><b>Built for working crew</b>Your duty, rest, commute and layover, not a passenger's trip.</div>
+  <div><b>No ads, no tracking</b>No third-party advertising and no tracking across other apps.</div>
+ </div>
+</section>
+
+<section class="plans solid" id="plans">
  <div class="wrap">
   <div class="center">
    <span class="eyebrow">Pricing</span>
@@ -245,7 +158,7 @@
    <p class="sub">Download free and use the everyday tools at no cost. Upgrade when you want live flight intelligence.</p>
   </div>
   <div class="cards">
-   <div class="card">
+   <div class="pcard">
     <h3>Free</h3>
     <p class="amt"><b>$0</b></p>
     <ul class="ticks">
@@ -259,7 +172,7 @@
      <li>Jumpseat countdown, seniority tracking and private crew notes</li>
     </ul>
    </div>
-   <div class="card premium">
+   <div class="pcard premium">
     <h3>Premium</h3>
     <p class="amt"><b>$7.99</b> a month &nbsp;or&nbsp; <b>$59.99</b> a year</p>
     <ul class="ticks">
@@ -276,7 +189,7 @@
  </div>
 </section>
 
-<section class="honest">
+<section class="honest solid">
  <div class="wrap">
   <div class="center">
    <span class="eyebrow">Honest by design</span>
@@ -284,17 +197,19 @@
   </div>
   <div class="grid">
    <div><h3>Source and freshness</h3><p>Live information shows where it comes from and how old it is.</p></div>
-   <div><h3>No guessing</h3><p>When a source is missing or late, CrewMate says so instead of filling the gap.</p></div>
-   <div><h3>A planning aid</h3><p>CrewMate is not your airline's official system. Always check anything operational with your airline.</p></div>
+   <div><h3>No guessing</h3><p>When a source is missing or late, GetCrewMate says so instead of filling the gap.</p></div>
+   <div><h3>A planning aid</h3><p>GetCrewMate is not your airline's official system. Always check anything operational with your airline.</p></div>
   </div>
  </div>
 </section>
 
-<section class="final">
+<section class="final clear" id="get">
  <div class="wrap">
-  <div class="box">
-   <div class="left"><img src="/img/icon-192.png" alt=""><div><h2>Get CrewMate</h2><p>Free on the App Store for iPhone.</p></div></div>
-   <a class="badge" href="https://apps.apple.com/us/app/getcrewmate/id6776444100" aria-label="Download CrewMate on the App Store"><img src="/img/app-store-badge.svg" alt="Download on the App Store" width="162" height="54"></a>
+  <div class="hero-copy">
+   <img class="ficon" src="img/icon-192.png" alt="" width="84" height="84">
+   <h2>Ready for whatever the day does next.</h2>
+   <p class="lead">Free on the App Store for iPhone.</p>
+   <a class="badge" href="https://apps.apple.com/us/app/getcrewmate/id6776444100" aria-label="Download GetCrewMate on the App Store"><img src="img/app-store-badge.svg" alt="Download on the App Store" width="162" height="54"></a>
   </div>
  </div>
 </section>
@@ -307,5 +222,6 @@
  </div>
 </footer>
 
+<script type="module" src="site.js"></script>
 </body>
 </html>
