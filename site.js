@@ -3,6 +3,31 @@
 // Scroll hint: fades once the visitor has started scrolling.
 const hintEl = document.querySelector('.hint');
 if (hintEl) addEventListener('scroll', () => hintEl.classList.toggle('gone', scrollY > 60), { passive: true });
+
+// Peek (founder, 11 Nov 2026): after 2 s with no touch, scroll or key, glide down about a quarter
+// of the screen once, so visitors see there is more below. The store buttons stay in view.
+// Never with Reduce Motion, never when arriving at a section link or part-way down the page.
+(() => {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches || location.hash || scrollY > 10) return;
+  let off = false;
+  const stop = () => { off = true; };
+  ['pointerdown', 'touchstart', 'wheel', 'keydown'].forEach(e => addEventListener(e, stop, { passive: true, once: true }));
+  addEventListener('scroll', () => { if (!peeking && scrollY > 10) off = true; }, { passive: true });
+  let peeking = false;
+  setTimeout(() => {
+    if (off || scrollY > 10) return;
+    peeking = true;
+    const to = Math.round(innerHeight * 0.25), t0 = performance.now(), dur = 1100;
+    const ease = x => 1 - Math.pow(1 - x, 3);
+    const step = now => {
+      if (off) return;
+      const p = Math.min(1, (now - t0) / dur);
+      scrollTo(0, Math.round(to * ease(p)));
+      if (p < 1) requestAnimationFrame(step); else peeking = false;
+    };
+    requestAnimationFrame(step);
+  }, 2000);
+})();
 const root = document.documentElement;
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches || location.search.includes('plain');
 const narrow = () => innerWidth <= 820;
