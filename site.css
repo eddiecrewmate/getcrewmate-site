@@ -46,9 +46,13 @@ h1 em{display:block;margin-top:.16em;font-size:.6em}
 .chap .card p.note{font-size:14px;color:var(--muted)}
 .price{font-size:15px;color:var(--muted);margin:16px 0 0}
 .price b{color:var(--ink);font-weight:600}
-.hint{position:absolute;left:50%;bottom:24px;width:26px;height:42px;margin-left:-13px;border:2px solid rgba(238,241,246,.35);border-radius:14px}
-.hint span{position:absolute;left:50%;top:7px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:var(--brass);animation:hint 1.8s ease-in-out infinite}
-@keyframes hint{0%{transform:translateY(0);opacity:1}70%{transform:translateY(14px);opacity:0}100%{opacity:0}}
+/* Scroll hint: says what is below and is a link to it; fades once the visitor scrolls (site.js). */
+.hint{position:absolute;left:50%;bottom:calc(22px + env(safe-area-inset-bottom));transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:2px;
+ padding:9px 20px 5px;border-radius:22px;background:rgba(14,22,40,.78);border:1px solid rgba(201,166,107,.35);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+ color:var(--ink);font-size:15px;font-weight:600;text-decoration:none;white-space:nowrap;transition:opacity .4s}
+.hint svg{color:var(--brass);animation:hint 1.6s ease-in-out infinite}
+.hint.gone{opacity:0;pointer-events:none}
+@keyframes hint{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
 
 /* story */
 .story{position:relative;background:var(--bg)}
@@ -143,7 +147,6 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-bet
  .nav .opt{display:none}
  .hero{align-items:flex-start;padding-top:96px}
  .final{align-items:flex-start}
- .hint{display:none}
  .js3d .chap{min-height:150vh;align-items:stretch;justify-content:flex-end;padding:0 12px 12px}
  .js3d .chap.flip{justify-content:flex-end}
  .js3d .card{position:sticky;bottom:calc(12px + env(safe-area-inset-bottom));align-self:stretch;margin-top:auto;max-width:none;background:rgba(14,22,40,.9);padding:16px 18px}
@@ -158,5 +161,5 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-bet
  .honest{padding:10px 0 64px}
 }
 @media (prefers-reduced-motion:reduce){
- .hint span{animation:none}
+ .hint svg{animation:none}
 }

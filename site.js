@@ -1,5 +1,8 @@
 // GetCrewMate scroll experience. Self-hosted, no third-party requests.
 // Without WebGL, or with reduced motion on, the page stays as plain content (html.no3d).
+// Scroll hint: fades once the visitor has started scrolling.
+const hintEl = document.querySelector('.hint');
+if (hintEl) addEventListener('scroll', () => hintEl.classList.toggle('gone', scrollY > 60), { passive: true });
 const root = document.documentElement;
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches || location.search.includes('plain');
 const narrow = () => innerWidth <= 820;
