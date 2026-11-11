@@ -39,6 +39,11 @@ h1 em{display:block;margin-top:.16em;font-size:.6em}
 .lead{font-size:clamp(18px,1.6vw,21px);color:#C3CCDB;margin:22px 0 26px;max-width:32em}
 .badge{display:inline-block}
 .badge img{height:54px;width:auto}
+.badges{display:flex;flex-wrap:wrap;align-items:center;gap:12px 14px}
+/* Google's badge file carries its own clear space: 80px tall shows the same visible size as the 54px App Store badge */
+.badge.gp{margin:-13px}
+.badge.gp img{height:80px;max-width:none}
+.chap .card p.note{font-size:14px;color:var(--muted)}
 .price{font-size:15px;color:var(--muted);margin:16px 0 0}
 .price b{color:var(--ink);font-weight:600}
 .hint{position:absolute;left:50%;bottom:24px;width:26px;height:42px;margin-left:-13px;border:2px solid rgba(238,241,246,.35);border-radius:14px}
