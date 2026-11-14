@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Get GetCrewMate</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0E1628">
+<link rel="icon" href="../favicon.png">
+<!-- Ad landing link. Phones go straight to their own store; computers see both badges.
+     The ad name arrives as ?utm_content=... (Meta URL parameter {{ad.name}}) and is
+     recorded once in Umami as "Ad to store" before the redirect, and passed to
+     Google Play as the install referrer, so downloads can be compared per ad. -->
+<script defer src="https://cloud.umami.is/script.js" data-website-id="db12f526-1b95-4edc-913f-ff26f5ee8f5f" data-domains="getcrewmate.app" data-do-not-track="true" data-auto-track="false"></script>
+<style>
+ :root { color-scheme: dark; }
+ body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #0E1628; color: #E9EDF5;
+        font: 17px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; text-align: center; }
+ main { padding: 24px 16px; max-width: 420px; }
+ img.icon { width: 72px; height: 72px; border-radius: 16px; }
+ h1 { font-size: 22px; margin: 14px 0 6px; }
+ p { color: #A9B3C7; margin: 0 0 22px; }
+ .badges { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+ .badges img { height: 52px; }
+ a.home { display: inline-block; margin-top: 22px; color: #D4AF6A; }
+</style>
+</head>
+<body>
+<main>
+ <img class="icon" src="../img/icon-192.png" alt="">
+ <h1 id="t">Opening your app store…</h1>
+ <p>GetCrewMate, for flight attendants and pilots. Free to download.</p>
+ <div class="badges">
+  <a id="ios" href="https://apps.apple.com/us/app/getcrewmate/id6776444100"><img src="../img/app-store-badge.svg" alt="Download on the App Store"></a>
+  <a id="android" href="https://play.google.com/store/apps/details?id=com.weismon.crewmate"><img src="../img/google-play-badge.png" alt="Get it on Google Play"></a>
+ </div>
+ <a class="home" href="../">See how it works</a>
+</main>
+<script>
+(function () {
+  var q = new URLSearchParams(location.search);
+  var ad = (q.get('utm_content') || q.get('a') || 'unknown').slice(0, 80);
+  var src = (q.get('utm_source') || 'direct').slice(0, 40);
+  var ua = navigator.userAgent || '';
+  var apple = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+  var android = /Android/i.test(ua);
+  var ios = 'https://apps.apple.com/us/app/getcrewmate/id6776444100';
+  var play = 'https://play.google.com/store/apps/details?id=com.weismon.crewmate&referrer=' +
+    encodeURIComponent('utm_source=' + src + '&utm_medium=ad&utm_content=' + ad);
+  document.getElementById('android').href = play;
+  var dest = apple ? ios : android ? play : null;
+  var store = apple ? 'App Store' : android ? 'Google Play' : 'none (computer)';
+  if (!dest) { document.getElementById('t').textContent = 'Get GetCrewMate'; }
+  var sent = false;
+  function go() { if (sent) return; sent = true; if (dest) location.replace(dest); }
+  function track() {
+    try {
+      if (window.umami) {
+        window.umami.track('Ad to store', { ad: ad, source: src, store: store });
+        if (dest) setTimeout(go, 350);
+        return true;
+      }
+    } catch (e) {}
+    return false;
+  }
+  if (!dest) { var n = 0, t = setInterval(function () { if (track() || ++n > 20) clearInterval(t); }, 150); return; }
+  // Never hold a phone more than ~1.2 s waiting for the counter.
+  setTimeout(go, 1200);
+  var tries = 0, timer = setInterval(function () { if (track() || ++tries > 6) { clearInterval(timer); if (tries > 6) go(); } }, 120);
+})();
+</script>
+</body>
+</html>
