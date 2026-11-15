@@ -10,7 +10,8 @@
 <!-- Ad landing link. Phones go straight to their own store; computers see both badges.
      The ad name arrives as ?utm_content=... (Meta URL parameter {{ad.name}}) and is
      recorded once in Umami as "Ad to store" before the redirect, and passed to
-     Google Play as the install referrer, so downloads can be compared per ad. -->
+     Google Play as the install referrer, so downloads can be compared per ad.
+     Ads whose name contains "Commute" open the App Store's Commute custom product page. -->
 <script defer src="https://cloud.umami.is/script.js" data-website-id="db12f526-1b95-4edc-913f-ff26f5ee8f5f" data-domains="getcrewmate.app" data-do-not-track="true" data-auto-track="false"></script>
 <style>
  :root { color-scheme: dark; }
@@ -45,6 +46,10 @@
   var apple = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
   var android = /Android/i.test(ua);
   var ios = 'https://apps.apple.com/us/app/getcrewmate/id6776444100';
+  // Commute ads open the App Store's "Commute" custom product page (commute screenshot
+  // first, commute promotional text). Until Apple approves that page, the ppid link
+  // shows the normal store page, so this is safe either way.
+  if (/commute/i.test(ad)) ios += '?ppid=5aebbbd6-1d3a-4645-98e6-bad715ee7778';
   var play = 'https://play.google.com/store/apps/details?id=com.weismon.crewmate&referrer=' +
     encodeURIComponent('utm_source=' + src + '&utm_medium=ad&utm_content=' + ad);
   document.getElementById('android').href = play;
