@@ -50,6 +50,15 @@
   // first, commute promotional text). Until Apple approves that page, the ppid link
   // shows the normal store page, so this is safe either way.
   if (/commute/i.test(ad)) ios += '?ppid=5aebbbd6-1d3a-4645-98e6-bad715ee7778';
+  // Per-ad App Store attribution: App Store Connect > App Analytics > Campaigns needs the
+  // account's provider token (pt) plus a campaign token (ct, max 40 chars) = the ad name.
+  // APPLE_PT is the account-wide number from App Store Connect's "Campaign links" generator.
+  // While it is empty, no campaign parameters are added (the link behaves exactly as before).
+  var APPLE_PT = '128984603';
+  if (APPLE_PT) {
+    var ct = ad.replace(/[^A-Za-z0-9 _.-]/g, '').replace(/\s+/g, '-').slice(0, 40);
+    ios += (ios.indexOf('?') < 0 ? '?' : '&') + 'pt=' + APPLE_PT + '&ct=' + encodeURIComponent(ct) + '&mt=8';
+  }
   var play = 'https://play.google.com/store/apps/details?id=com.weismon.crewmate&referrer=' +
     encodeURIComponent('utm_source=' + src + '&utm_medium=ad&utm_content=' + ad);
   document.getElementById('android').href = play;
