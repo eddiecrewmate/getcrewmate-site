@@ -54,7 +54,7 @@
   // account's provider token (pt) plus a campaign token (ct, max 40 chars) = the ad name.
   // APPLE_PT is the account-wide number from App Store Connect's "Campaign links" generator.
   // While it is empty, no campaign parameters are added (the link behaves exactly as before).
-  var APPLE_PT = '';
+  var APPLE_PT = '128984603';
   if (APPLE_PT) {
     var ct = ad.replace(/[^A-Za-z0-9 _.-]/g, '').replace(/\s+/g, '-').slice(0, 40);
     ios += (ios.indexOf('?') < 0 ? '?' : '&') + 'pt=' + APPLE_PT + '&ct=' + encodeURIComponent(ct) + '&mt=8';
