@@ -11,7 +11,9 @@
      The ad name arrives as ?utm_content=... (Meta URL parameter {{ad.name}}) and is
      recorded once in Umami as "Ad to store" before the redirect, and passed to
      Google Play as the install referrer, so downloads can be compared per ad.
-     Ads whose name contains "Commute" open the App Store's Commute custom product page. -->
+     Ads whose name contains "Commute" open the App Store's Commute custom product page.
+     App Store links also carry a campaign token (ct, from source + ad name) once PT is set,
+     so App Store Connect reports downloads, paying users and proceeds per ad. -->
 <script defer src="https://cloud.umami.is/script.js" data-website-id="db12f526-1b95-4edc-913f-ff26f5ee8f5f" data-domains="getcrewmate.app" data-do-not-track="true" data-auto-track="false"></script>
 <style>
  :root { color-scheme: dark; }
@@ -49,7 +51,16 @@
   // Commute ads open the App Store's "Commute" custom product page (commute screenshot
   // first, commute promotional text). Until Apple approves that page, the ppid link
   // shows the normal store page, so this is safe either way.
-  if (/commute/i.test(ad)) ios += '?ppid=5aebbbd6-1d3a-4645-98e6-bad715ee7778';
+  var iosParams = [];
+  if (/commute/i.test(ad)) iosParams.push('ppid=5aebbbd6-1d3a-4645-98e6-bad715ee7778');
+  // App Store Connect campaign link: pt = our App Store Connect provider token,
+  // ct = one name per ad, so App Analytics shows downloads, paying users and
+  // proceeds per ad (Acquisition > Campaigns). ct is limited to 40 characters.
+  // Until PT is filled in, nothing is added and the link works as before.
+  var PT = '';
+  var ct = (src + '-' + ad).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 40);
+  if (PT) iosParams.push('pt=' + PT, 'ct=' + encodeURIComponent(ct), 'mt=8');
+  if (iosParams.length) ios += '?' + iosParams.join('&');
   var play = 'https://play.google.com/store/apps/details?id=com.weismon.crewmate&referrer=' +
     encodeURIComponent('utm_source=' + src + '&utm_medium=ad&utm_content=' + ad);
   document.getElementById('android').href = play;
@@ -61,7 +72,7 @@
   function track() {
     try {
       if (window.umami) {
-        window.umami.track('Ad to store', { ad: ad, source: src, store: store });
+        window.umami.track('Ad to store', { ad: ad, source: src, store: store, ct: ct });
         if (dest) setTimeout(go, 350);
         return true;
       }
